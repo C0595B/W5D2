@@ -1,0 +1,101 @@
+
+
+function anagrams(str1, str2) {
+
+ let frequency = {}
+
+
+ let frequency2 = {}
+
+
+ let reducedStr1 = str1.toLowerCase().split('').sort().join('')
+
+
+ let reducedStr2 = str2.toLowerCase().split('').sort().join('')
+
+
+
+ let splitStr1 = reducedStr1.replace(/[^\w ]/g, '')
+
+
+ let splitStr2 = reducedStr2.replace(/[^\w ]/g, '')
+
+
+ for (let i = 0; i < splitStr1.length; i++) {
+
+
+   if (frequency[splitStr1[i]]) {
+
+
+     frequency[splitStr1[i]]++
+
+
+   } else {
+
+
+     frequency[splitStr1[i]] = 1
+
+
+   }
+
+
+ }
+
+
+ for (let i = 0; i < splitStr2.length; i++) {
+
+
+   if (frequency2[splitStr2[i]]) {
+
+
+     frequency2[splitStr2[i]]++
+
+
+   } else {
+
+
+     frequency2[splitStr2[i]] = 1
+
+
+   }
+
+
+ }
+
+
+ const frequencyKey = Object.keys(frequency)
+
+
+
+ for (let i = 0; i < frequencyKey.length; i++){
+
+
+   if (frequency[frequencyKey[i]] !== frequency2[frequencyKey[i]]) {
+
+
+     return false
+
+
+   }
+
+
+ }
+
+
+ return true
+
+
+}
+
+
+console.log(anagrams('rail safety', 'fairy tales')) 
+
+
+console.log(anagrams('RAIL! SAFETY!', 'fairy tales'))
+
+
+console.log(anagrams('Hi there', 'Bye there'))
+
+
+
+
